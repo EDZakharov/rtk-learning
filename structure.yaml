@@ -1,0 +1,69 @@
+src:
+  app:
+    store.js: 'Настройка Redux Store'
+    App.js: 'Корневой компонент приложения'
+    routes.js: 'Конфигурация роутов'
+
+  pages:
+    HomePage:
+      HomePage.jsx: 'Главная страница'
+      HomePage.module.css: 'Стили для главной страницы'
+    NotesPage:
+      NotesPage.jsx: 'Страница для управления заметками'
+      NotesPage.module.css: 'Стили для страницы заметок'
+
+  widgets:
+    Header:
+      Header.jsx: 'Компонент заголовка'
+      Header.module.css: 'Стили для заголовка'
+    Sidebar:
+      Sidebar.jsx: 'Компонент сайдбара для фильтрации по категориям'
+      Sidebar.module.css: 'Стили для сайдбара'
+
+  features:
+    notes:
+      index.js: 'Экспорт функционала заметок'
+      NotesSlice.js: 'Redux slice для работы с заметками'
+      AddNoteForm.jsx: 'Форма добавления заметки'
+      EditNoteForm.jsx: 'Форма редактирования заметки'
+      NotesList.jsx: 'Список заметок'
+      NoteItem.jsx: 'Компонент одной заметки'
+      NotesAPI.js: 'API взаимодействие для заметок'
+      notes.module.css: 'Стили для компонентов заметок'
+
+    categories:
+      index.js: 'Экспорт функционала категорий'
+      CategoriesSlice.js: 'Redux slice для категорий'
+      CategoriesFilter.jsx: 'Фильтр заметок по категориям'
+      CategoriesAPI.js: 'API взаимодействие для категорий'
+      categories.module.css: 'Стили для категорий'
+
+  entities:
+    user:
+      userSlice.js: 'Redux slice для пользователя'
+      userAPI.js: 'API взаимодействие для пользователя'
+      user.module.css: 'Стили для пользователя'
+
+  shared:
+    ui:
+      Button.jsx: 'UI-компонент кнопки'
+      Modal.jsx: 'UI-компонент модального окна'
+      Input.jsx: 'UI-компонент поля ввода'
+
+    lib:
+      formatDate.js: 'Утилита форматирования даты'
+      calculateStats.js: 'Вычисление статистики для заметок'
+
+    hooks:
+      useLocalStorage.js: 'Кастомный хук для работы с LocalStorage'
+
+    styles:
+      variables.css: 'Глобальные переменные стилей (цвета, шрифты и т.д.)'
+
+  assets:
+    images:
+      logo.png: 'Логотип'
+    fonts: 'Шрифты'
+    icons: 'Иконки'
+
+  index.js: 'Точка входа в приложение'
