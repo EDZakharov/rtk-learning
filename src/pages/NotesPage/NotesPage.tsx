@@ -1,3 +1,11 @@
+import { Outlet } from 'react-router-dom';
+
 export const NotesPage = () => {
-  return <div>NotesPage</div>;
+  // const navigate = useNavigate();
+
+  return (
+    <div className="bg-gray-800 w-full text-white">
+      <Outlet />
+    </div>
+  );
 };

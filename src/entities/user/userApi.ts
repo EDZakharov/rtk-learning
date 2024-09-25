@@ -8,7 +8,7 @@ const userSchema = z.object({
 });
 
 const baseUrl = 'http://localhost:3000';
-export const api = {
+export const UserApi = {
   fetchUsers: () =>
     fetch(`${baseUrl}/users`)
       .then((response) => response.json())

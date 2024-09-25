@@ -1,7 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+type UserId = string;
+
 export type User = {
-  id: string;
+  id: UserId;
   name: string;
   categorySubscriptions: string[];
   notes: {
@@ -13,10 +15,12 @@ export type User = {
 interface UsersState {
   users: User[];
   fetchStatus: 'idle' | 'pending' | 'succeeded' | 'failed';
+  selectedUser: User | null;
 }
 const initialState: UsersState = {
   users: [],
   fetchStatus: 'idle',
+  selectedUser: null,
 };
 
 export const UsersSlice = createSlice({
@@ -24,6 +28,7 @@ export const UsersSlice = createSlice({
   initialState,
   selectors: {
     getUsers: (state) => state.users,
+    getSelectedUser: (state) => state.selectedUser,
     selectIsPending: (state) => state.fetchStatus === 'pending',
     selectIsFetched: (state) => state.fetchStatus === 'succeeded',
     selectIsFailed: (state) => state.fetchStatus === 'failed',
@@ -35,6 +40,13 @@ export const UsersSlice = createSlice({
       const { users } = action.payload;
       state.users = users;
     },
+    setSelectedUser: (state, action: PayloadAction<{ userId: UserId }>) => {
+      const { userId } = action.payload;
+
+      state.selectedUser =
+        state.users.find((user) => user.id === userId) ?? null;
+    },
+
     fetchUsersPending: (state) => {
       state.fetchStatus = 'pending';
     },

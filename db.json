@@ -39,6 +39,12 @@
       "name": "Jim",
       "categorySubscriptions": ["1"],
       "notes": [{ "id": "1", "text": "a comment about post 5" }]
+    },
+    {
+      "id": "6",
+      "name": "Jack",
+      "categorySubscriptions": [],
+      "notes": [{ "id": "1", "text": "a comment about post 6" }]
     }
   ]
 }

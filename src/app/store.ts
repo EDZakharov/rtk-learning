@@ -1,15 +1,19 @@
 import { configureStore, ThunkAction, UnknownAction } from '@reduxjs/toolkit';
 import { useDispatch, useSelector, useStore } from 'react-redux';
-import { api } from '../entities/user/userApi';
+import { CategoriesSlice } from '../entities/categories/Categories-slice';
+import { CategoriesApi } from '../entities/categories/categoriesApi';
+import { UserApi } from '../entities/user/userApi';
 import { UsersSlice } from '../entities/user/users-slice';
 
 const extraArgument = {
-  api,
+  UserApi,
+  CategoriesApi,
 };
 
 export const store = configureStore({
   reducer: {
     [UsersSlice.name]: UsersSlice.reducer,
+    [CategoriesSlice.name]: CategoriesSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ thunk: { extraArgument } }),

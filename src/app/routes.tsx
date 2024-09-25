@@ -1,20 +1,21 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { fetchCategoriesThunk } from '../entities/categories/fetchCategoriesThunk';
+import { fetchUsersThunk } from '../entities/user/fetchUsersThunk';
+import { UserData } from '../features/users/UserData';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import { HomePage } from '../pages/HomePage/HomePage';
 import { NotesPage } from '../pages/NotesPage/NotesPage';
 import App from './App';
+import { store } from './store';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     loader: () => {
-      // const localUserId = localStorage.getItem('user');
-      // if (localUserId) {
-      //   const user = await UserApi.fetchUser(localUserId);
-      // }
+      store.dispatch(fetchUsersThunk());
+      store.dispatch(fetchCategoriesThunk());
 
-      // fetchUsersThunk();
       return null;
     },
     children: [
@@ -25,6 +26,12 @@ export const router = createBrowserRouter([
       {
         path: '/notes',
         element: <NotesPage />,
+        children: [
+          {
+            path: ':userId',
+            element: <UserData />,
+          },
+        ],
       },
     ],
     errorElement: <ErrorPage />,

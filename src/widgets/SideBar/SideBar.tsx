@@ -7,9 +7,7 @@ export const SideBar = () => {
         <li>
           <Link to="/">home</Link>
         </li>
-        <li>
-          <Link to="/notes">notes</Link>
-        </li>
+        <li>{/* <Link to="/notes">notes</Link> */}</li>
       </ul>
     </div>
   );
