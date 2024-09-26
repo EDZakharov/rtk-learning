@@ -1,26 +1,40 @@
 import { useAppSelector } from '../../app/store';
-import { CategoriesSlice } from '../../entities/categories/Categories-slice';
-import { UsersSlice } from '../../entities/user/users-slice';
+import { InputSubmitButton } from '../../shared/ui/buttons/InputSubmitButton';
+import { FormInput } from '../../shared/ui/input/inputForm';
+import { selectUserSubscriptions } from './SelectUserSubscription';
+import { UserAddNoteForm } from './UserAddNoteForm';
 
 export const UserData = () => {
-  const user = useAppSelector(UsersSlice.selectors.getSelectedUser);
-  const subscriptions = useAppSelector(
-    CategoriesSlice.selectors.selectCategoriesListById
-  )(user?.categorySubscriptions ?? []);
+  const { user, subscriptions } = useAppSelector(selectUserSubscriptions);
 
   if (!user) {
     return null;
   }
 
   return (
-    <div>
-      <div>{user.id}</div>
-      <div>{user.name}</div>
-      <div>
-        {subscriptions.map((el) => (
-          <div key={el.id}>{el.title}</div>
+    <div className="flex flex-col bg-violet-400 gap-1">
+      <p>ID пользователя: {user.id}</p>
+      <p>Имя пользователя: {user.name}</p>
+      <ul className="flex gap-3">
+        {user.notes.map((el) => (
+          <li key={el.id} className="bg-violet-700">
+            {el.text}
+          </li>
         ))}
-      </div>
+      </ul>
+      <ul className="flex gap-3 ">
+        Подписки:
+        {subscriptions.map((el) => (
+          <li key={el.id} className="bg-violet-700 lowercase">
+            <p>{el.title}</p>
+          </li>
+        ))}
+      </ul>
+
+      <UserAddNoteForm user={user}>
+        <FormInput textLabel={'Новая заметка'} placeHolder={'Заметка'} />
+        <InputSubmitButton textLabel={'Добавить'} />
+      </UserAddNoteForm>
     </div>
   );
 };

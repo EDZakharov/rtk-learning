@@ -17,17 +17,7 @@ export const CategoriesSlice = createSlice({
   name: 'categories',
   initialState,
   selectors: {
-    selectCategoriesListById: (state) => (otherCategoriesId: string[] | []) => {
-      const otherCategoryIds = new Set(otherCategoriesId);
-
-      return state.categories.filter((category) =>
-        otherCategoryIds.has(category.id)
-      );
-    },
     selectCategoriesList: (state) => state.categories,
-    selectCategoriesById: (state) => (id: string) => {
-      return state.categories.find((category) => category.id === id);
-    },
   },
   reducers: {
     addCategories: (
