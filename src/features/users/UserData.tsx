@@ -1,22 +1,24 @@
+import { useParams } from 'react-router-dom'
 import { useAppSelector } from '../../app/store'
-import { selectUserSubscriptions } from './selectUserSubscriptions'
+import { Categories } from './Categories'
+import { selectUserSubscription } from './selectUserSubscription'
 
 export const UserData = () => {
-	const { user, subscriptions } = useAppSelector(selectUserSubscriptions)
+	const { userId } = useParams()
+
+	const { user, subscriptions } = useAppSelector(
+		selectUserSubscription(userId ?? '')
+	)
 
 	if (!user) {
 		return null
 	}
 
 	return (
-		<div>
-			<div>{user.id}</div>
-			<div>{user.name}</div>
-			<div>
-				{subscriptions.map((el) => (
-					<div key={el.id}>{el.title}</div>
-				))}
-			</div>
+		<div className='flex flex-col bg-violet-400 gap-1'>
+			<p>ID пользователя: {user.id}</p>
+			<p>Имя пользователя: {user.name}</p>
+			<Categories subscriptions={subscriptions} user={user} />
 		</div>
 	)
 }
