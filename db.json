@@ -1,50 +1,67 @@
 {
-  "categories": [
-    { "id": "1", "title": "favorites" },
-    { "id": "2", "title": "trending" }
-  ],
-  "users": [
-    {
-      "id": "1",
-      "name": "John",
-      "categorySubscriptions": ["1", "2"],
-      "notes": [
-        { "id": "1", "text": "a comment about post 1" },
-        { "id": "2", "text": "another comment about post 1" }
-      ]
-    },
-    {
-      "id": "2",
-      "name": "Jane",
-      "categorySubscriptions": ["2"],
-      "notes": [{ "id": "1", "text": "a comment about post 2" }]
-    },
-    {
-      "id": "3",
-      "name": "Joe",
-      "categorySubscriptions": ["1"],
-      "notes": [{ "id": "1", "text": "a comment about post 3" }]
-    },
-    {
-      "id": "4",
-      "name": "Jill",
-      "categorySubscriptions": ["2"],
-      "notes": [
-        { "id": "1", "text": "a comment about post 4" },
-        { "id": "2", "text": "another comment about post 4" }
-      ]
-    },
-    {
-      "id": "5",
-      "name": "Jim",
-      "categorySubscriptions": ["1"],
-      "notes": [{ "id": "1", "text": "a comment about post 5" }]
-    },
-    {
-      "id": "6",
-      "name": "Jack",
-      "categorySubscriptions": [],
-      "notes": [{ "id": "1", "text": "a comment about post 6" }]
-    }
-  ]
+	"categories": [
+		{ "id": "1", "title": "favorites" },
+		{ "id": "2", "title": "trending" }
+	],
+	"users": [
+		{
+			"id": "1",
+			"name": "John",
+			"categorySubscriptions": ["1", "2"],
+			"notes": [
+				{ "id": "1", "header": "note1", "text": "a comment about post 1" },
+				{ "id": "2", "text": "another comment about post 1" }
+			]
+		},
+		{
+			"id": "2",
+			"name": "Jane",
+			"categorySubscriptions": ["2"],
+			"notes": [
+				{ "id": "1", "header": "note1", "text": "a comment about post 2" }
+			]
+		},
+		{
+			"id": "3",
+			"name": "Joe",
+			"categorySubscriptions": ["1"],
+			"notes": [
+				{ "id": "1", "header": "note2", "text": "a comment about post 3" }
+			]
+		},
+		{
+			"id": "4",
+			"name": "Jill",
+			"categorySubscriptions": ["2"],
+			"notes": [
+				{ "id": "1", "header": "note1", "text": "a comment about post 4" },
+				{ "id": "2", "header": "note2", "text": "another comment about post 4" }
+			]
+		},
+		{
+			"id": "5",
+			"name": "Jim",
+			"categorySubscriptions": ["1"],
+			"notes": [
+				{ "id": "1", "header": "note2", "text": "a comment about post 5" }
+			]
+		},
+		{
+			"id": "6",
+			"name": "Jack",
+			"categorySubscriptions": [],
+			"notes": [
+				{ "id": "1", "header": "note2", "text": "a comment about post 6" }
+			]
+		},
+		{
+			"id": "7",
+			"name": "Jill",
+			"categorySubscriptions": ["2"],
+			"notes": [
+				{ "id": "1", "header": "note1", "text": "a comment about post 7" },
+				{ "id": "2", "header": "note2", "text": "another comment about post 7" }
+			]
+		}
+	]
 }

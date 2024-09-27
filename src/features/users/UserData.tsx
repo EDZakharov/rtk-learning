@@ -1,26 +1,22 @@
-import { useAppSelector } from '../../app/store';
-import { CategoriesSlice } from '../../entities/categories/Categories-slice';
-import { UsersSlice } from '../../entities/user/users-slice';
+import { useAppSelector } from '../../app/store'
+import { selectUserSubscriptions } from './selectUserSubscriptions'
 
 export const UserData = () => {
-  const user = useAppSelector(UsersSlice.selectors.getSelectedUser);
-  const subscriptions = useAppSelector(
-    CategoriesSlice.selectors.selectCategoriesListById
-  )(user?.categorySubscriptions ?? []);
+	const { user, subscriptions } = useAppSelector(selectUserSubscriptions)
 
-  if (!user) {
-    return null;
-  }
+	if (!user) {
+		return null
+	}
 
-  return (
-    <div>
-      <div>{user.id}</div>
-      <div>{user.name}</div>
-      <div>
-        {subscriptions.map((el) => (
-          <div key={el.id}>{el.title}</div>
-        ))}
-      </div>
-    </div>
-  );
-};
+	return (
+		<div>
+			<div>{user.id}</div>
+			<div>{user.name}</div>
+			<div>
+				{subscriptions.map((el) => (
+					<div key={el.id}>{el.title}</div>
+				))}
+			</div>
+		</div>
+	)
+}
