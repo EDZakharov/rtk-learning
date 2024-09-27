@@ -1,43 +1,35 @@
-import { FC } from 'react'
-import { useAppDispatch } from '../../app/store'
-import { Category } from '../../entities/categories/Categories-slice'
-import { deleteUserThunk } from '../../entities/user'
-import { User } from '../../entities/user/users-slice'
-import { InputSubmitButton } from '../../shared/ui/buttons/InputSubmitButton'
-import { FormInput } from '../../shared/ui/input/inputForm'
-import { CategoryListItem } from './CategoryListItem'
-import { UserAddNoteForm } from './UserAddNoteForm'
+import { FC } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/store';
+import { setActiveCategoryId } from '../../entities/categories';
+import { selectActiveCategory } from './selectActiveCategory';
 
-interface IProps {
-	subscriptions?: Category[]
-	user: User
-}
+/**
+ * A component to display the list of categories for a given user.
+ *
+ * This component takes the user id as a parameter from the URL and
+ * fetches the list of categories from the Redux store. It then displays
+ * the list of categories as links to the notes page for each category.
+ *
+ * @returns {React.ReactElement} The rendered component.
+ */
+export const Categories: FC = () => {
+  const { userId } = useParams();
+  const dispatch = useAppDispatch();
+  const { categories, active } = useAppSelector(selectActiveCategory);
 
-export const Categories: FC<IProps> = ({ user, subscriptions = [] }) => {
-	const dispatch = useAppDispatch()
-
-	return (
-		<>
-			<p>Подписки:</p>
-			<ul className='flex gap-3 '>
-				{subscriptions.map((category) => (
-					<CategoryListItem key={category.id} category={category} />
-				))}
-			</ul>
-
-			{user.notes.map((el) => (
-				<li
-					key={el.id}
-					className='bg-violet-700'
-					onClick={() => dispatch(deleteUserThunk(user, el.id))}
-				>
-					{el.text}
-				</li>
-			))}
-			<UserAddNoteForm user={user}>
-				<FormInput textLabel={'Новая заметка'} placeHolder={'Заметка'} />
-				<InputSubmitButton textLabel={'Добавить'} />
-			</UserAddNoteForm>
-		</>
-	)
-}
+  return (
+    <>
+      {categories.map((category) => (
+        <Link
+          className={active === category.id ? 'text-red-500' : ''}
+          key={category.id}
+          to={`/notes/${userId}/${category.title.toLowerCase()}`}
+          onClick={() => dispatch(setActiveCategoryId({ id: category.id }))}
+        >
+          {category.title}
+        </Link>
+      ))}
+    </>
+  );
+};

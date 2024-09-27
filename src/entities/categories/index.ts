@@ -3,6 +3,9 @@ import { fetchCategoriesThunk } from './fetchCategoriesThunk';
 
 const CategoriesSelectors = {
   selectCategoriesList: CategoriesSlice.selectors.selectCategoriesList,
+  selectActiveCategory: CategoriesSlice.selectors.selectActiveCategoryId,
 };
 
-export { CategoriesSelectors, fetchCategoriesThunk };
+const setActiveCategoryId = CategoriesSlice.actions.setActiveCategoryId;
+
+export { CategoriesSelectors, fetchCategoriesThunk, setActiveCategoryId };

@@ -1,24 +1,20 @@
-import { useParams } from 'react-router-dom'
-import { useAppSelector } from '../../app/store'
-import { Categories } from './Categories'
-import { selectUserSubscription } from './selectUserSubscription'
+import { FC } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Categories } from './Categories';
 
-export const UserData = () => {
-	const { userId } = useParams()
-
-	const { user, subscriptions } = useAppSelector(
-		selectUserSubscription(userId ?? '')
-	)
-
-	if (!user) {
-		return null
-	}
-
-	return (
-		<div className='flex flex-col bg-violet-400 gap-1'>
-			<p>ID пользователя: {user.id}</p>
-			<p>Имя пользователя: {user.name}</p>
-			<Categories subscriptions={subscriptions} user={user} />
-		</div>
-	)
-}
+/**
+ * A component to display the user's data.
+ *
+ * This component renders a sidebar with links to the user's categories and an
+ * outlet to render the user's notes.
+ *
+ * @returns {React.ReactElement} The rendered component.
+ */
+export const UserData: FC = () => {
+  return (
+    <div className="flex flex-col bg-violet-400 gap-1">
+      <Categories />
+      <Outlet />
+    </div>
+  );
+};
