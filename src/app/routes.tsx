@@ -2,9 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { fetchCategoriesThunk } from '../entities/categories/fetchCategoriesThunk';
 import { fetchUsersThunk } from '../entities/user/fetchUsersThunk';
 import { CategoryListItem } from '../features/users/CategoryListItem';
-import { UserData } from '../features/users/UserData';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
-import { HomePage } from '../pages/HomePage/HomePage';
 import { NotesPage } from '../pages/NotesPage/NotesPage';
 import App from './App';
 import { store } from './store';
@@ -13,16 +11,17 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    loader: () => {
-      store.dispatch(fetchUsersThunk());
-      store.dispatch(fetchCategoriesThunk());
-
-      return null;
-    },
     children: [
       {
         path: '/',
-        element: <HomePage />,
+        lazy: () =>
+          import('../pages/HomePage/HomePage').then((module) => ({
+            Component: module.HomePage,
+            loader: () => {
+              store.dispatch(fetchUsersThunk());
+              return null;
+            },
+          })),
       },
       {
         path: '/notes',
@@ -30,7 +29,14 @@ export const router = createBrowserRouter([
         children: [
           {
             path: ':userId/',
-            element: <UserData />,
+            lazy: () =>
+              import('../features/users/UserData').then((module) => ({
+                Component: module.UserData,
+                loader: () => {
+                  store.dispatch(fetchCategoriesThunk());
+                  return null;
+                },
+              })),
             children: [
               {
                 path: ':categoryId',

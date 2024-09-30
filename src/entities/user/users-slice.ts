@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { rootReducer } from '../../app/store';
 
 export type UserId = string;
 
@@ -151,4 +152,4 @@ export const UsersSlice = createSlice({
       state.updateUserNotesStatus = 'failed';
     },
   },
-});
+}).injectInto(rootReducer);

@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { useAppDispatch } from '../../app/store';
+
+import { useAppDispatch } from '../../app/redux';
 import { deleteUserThunk } from '../../entities/user';
 import { User } from '../../entities/user/users-slice';
 

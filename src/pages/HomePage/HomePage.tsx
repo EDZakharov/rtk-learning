@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../app/store';
+
+import { useAppDispatch, useAppSelector } from '../../app/redux';
 import { UsersSlice } from '../../entities/user/users-slice';
 
 /**

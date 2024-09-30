@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../app/store';
+
+import { useAppDispatch, useAppSelector } from '../../app/redux';
 import { setActiveCategoryId } from '../../entities/categories';
 import { selectActiveCategory } from './selectActiveCategory';
 

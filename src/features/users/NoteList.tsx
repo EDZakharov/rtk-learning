@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { useAppSelector } from '../../app/store';
+
+import { useAppSelector } from '../../app/redux';
 import { UsersSelectors } from '../../entities/user';
 import { User } from '../../entities/user/users-slice';
 import { NoteListItem } from './NoteListItem';

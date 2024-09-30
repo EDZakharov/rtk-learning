@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { rootReducer } from '../../app/store';
 
 export type Category = {
   id: string;
-  categoryId: string;
   title: string;
 };
 
@@ -28,7 +28,7 @@ export const CategoriesSlice = createSlice({
       );
     },
     selectActiveCategoryId: (state) => state.activeCategoryId,
-    selectCategoriesList: (state) => state.categories,
+    selectCategoriesList: (state): Category[] => state.categories,
     selectCategoriesById: (state) => (id: string) => {
       return state.categories.find((category) => category.id === id);
     },
@@ -46,4 +46,4 @@ export const CategoriesSlice = createSlice({
       state.activeCategoryId = action.payload.id;
     },
   },
-});
+}).injectInto(rootReducer);

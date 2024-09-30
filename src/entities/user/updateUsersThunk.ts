@@ -1,4 +1,4 @@
-import { AppThunk } from '../../app/store';
+import { AppThunk } from '../../app/redux';
 import { Note, User, UsersSlice } from './users-slice';
 
 /**

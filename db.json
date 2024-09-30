@@ -24,14 +24,24 @@
       ],
       "notes": [
         {
-          "id": "1727464470495",
-          "categoryId": "1",
-          "text": "fsf"
-        },
-        {
           "id": "1727464474791",
           "categoryId": "2",
           "text": "fff"
+        },
+        {
+          "id": "1727710465740",
+          "categoryId": "1",
+          "text": "gdgd"
+        },
+        {
+          "id": "1727711969676",
+          "categoryId": "1",
+          "text": "gdgd"
+        },
+        {
+          "id": "1727711973337",
+          "categoryId": "2",
+          "text": "dgd"
         }
       ]
     },
@@ -39,18 +49,29 @@
       "id": "2",
       "name": "Jane",
       "categorySubscriptions": [
-        "1"
+        "2",
+        "3"
       ],
+      "notes": []
+    },
+    {
+      "id": "3",
+      "name": "Bob",
+      "categorySubscriptions": [
+        "1",
+        "3"
+      ],
+      "notes": []
+    },
+    {
+      "id": "4",
+      "name": "Alice",
+      "categorySubscriptions": [],
       "notes": [
         {
-          "id": "1727463535383",
-          "categoryId": "2",
-          "text": "gdgd"
-        },
-        {
-          "id": "1727464519089",
+          "id": "1727712013870",
           "categoryId": "3",
-          "text": "gdgd"
+          "text": "gdg"
         }
       ]
     }

@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { useAppSelector } from '../../app/store';
+
+import { useAppSelector } from '../../app/redux';
 import { UsersSelectors } from '../../entities/user';
 import { InputSubmitButton } from '../../shared/ui/buttons/InputSubmitButton';
 import { FormInput } from '../../shared/ui/input/inputForm';
